@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm annoying!</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+        #content {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script defer>
+        const limit = 15;
+        let dx = Math.random() * (limit - 2);
+        let dy = limit - dx;
+        
+        const moveWindow = () => {
+            let x = window.screenX + dx;
+            let y = window.screenY + dy;
+
+            if (x <= 0 || x + window.outerWidth >= screen.width) dx *= -1;
+            if (y <= 0 || y + window.outerHeight >= screen.height - 50) dy *= -1;
+
+            window.moveTo(x, y);
+            setTimeout(moveWindow, 1);
+        };
+
+        moveWindow();
+    </script>
+</head>
+<body>
+    <div id="content"></div>
+</body>
+</html>
